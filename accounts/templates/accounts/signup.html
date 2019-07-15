@@ -1,0 +1,15 @@
+{% extends 'accounts/base.html' %}
+
+{% block content %}
+
+<h2>Регистрация</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Регистрация</button>
+</form>
+<h3>Если вы хотите изменить пароль,нажмите на кнопку</h3>
+  <a href="{% url 'password_change' %}">Изменить пароль</a>
+<h3>Если вы забыли пароль,воспользуйтесь сылкой сброса пароля</h3>
+  <a href="{% url 'password_reset' %}">Сброс пароля</a>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% load static %}
+<html>
+<head>
+  <title>Главная</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400"
+  rel="stylesheet">
+  <link href="{% static 'accounts/style.css' %}" rel="stylesheet"></head>
+  <body>
+    <div>
+      <header>
+        <div class="nav-left">
+          <h1><a href="{% url 'home' %}">Главная</a></h1>
+        </div>
+        <div class="nav-left">
+          <h1><a href="{% url 'blog' %}">Наш блог</a></h1>
+        </div>
+        <div class="nav-left">
+          <h1><a href="{% url 'signup' %}">Регистрация</a></h1>
+        </div>
+        <div class="nav-left">
+          <h1><a href="{% url 'about' %}">О нас</a></h1>
+        </div>
+
+       </header>
+        {% if user.is_authenticated %}
+          <p>Здравствуйте {{ user.username }}</p>
+          <p><a href="{% url 'logout' %}">Выйти</a></p>
+        {% else %}
+          <p>Вы не вошли</p>
+          <a href="{% url 'login' %}">Войти</a>
+        {% endif %}
+       {% block content %}
+       {% endblock content %}
+     </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'accounts/base.html' %}
+
+
+{% block content %}
+ <div class="nav-right">
+     <a href="{% url 'post_new' %}">+ Новый пост</a>
+ </div>
+
+  {% for post in object_list %}
+
+  <div class="post-entry">
+    <h2><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h2>
+    <p>{{ post.body }}</p>
+  </div>{% endfor %}
+{% endblock content %}
